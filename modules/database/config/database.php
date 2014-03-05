@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') OR die('No direct access allowed.');
+	<?php defined('SYSPATH') OR die('No direct access allowed.');
 
 return array
 (
@@ -19,9 +19,9 @@ return array
 			 * Ports and sockets may be appended to the hostname.
 			 */
 			'hostname'   => 'localhost',
-			'database'   => 'kohana',
-			'username'   => FALSE,
-			'password'   => FALSE,
+			'database'   => 'smiechm',
+			'username'   => 'smiechm',
+			'password'   => 'ppp',
 			'persistent' => FALSE,
 		),
 		'table_prefix' => '',
@@ -39,9 +39,9 @@ return array
 			 * string   password    database password
 			 * boolean  persistent  use persistent connections?
 			 */
-			'dsn'        => 'mysql:host=localhost;dbname=kohana',
-			'username'   => 'root',
-			'password'   => 'r00tdb',
+			'dsn'        => 'mysql:host=localhost;dbname=smiechm',
+			'username'   => 'smiechm',
+			'password'   => 'ppp',
 			'persistent' => FALSE,
 		),
 		/**
