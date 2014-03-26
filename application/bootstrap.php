@@ -131,14 +131,35 @@ Kohana::modules(array(
 	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
 	));
 
+Route::set('login', 'login')->defaults(array(
+	'controller' => 'auth',
+	'action' => 'loginrender'
+));
+
+Route::set('loginVerify', 'verifyLogin')->defaults(array(
+	'controller' => 'auth',
+	'action' => 'verify'
+));
+
+Route::set('admin', 'admin')->defaults(array(
+	'controller' => 'admin',
+	'action' => 'index'
+));
+
+Route::set('logout', 'logout')->defaults(array(
+	'controller' => 'auth',
+	'action' => 'logout'
+));
+
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
- */
+ */ 
 Route::set('default', '(<controller>(/<action>(/<id>)))')
-	->defaults(array(
-		'controller' => 'welcome',
-		'action'     => 'index',
-	));
+        ->defaults(array(
+                'controller' => 'welcome',
+                'action'     => 'index',
+        ));
+
 
 Cookie::$salt = 'ThisIsMySecretCookieSalt';

@@ -110,3 +110,18 @@
 #11 /var/www/system/classes/Kohana/Request.php(986): Kohana_Request_Client->execute(Object(Request))
 #12 /var/www/index.php(118): Kohana_Request->execute()
 #13 {main} in /var/www/modules/orm/classes/Kohana/ORM.php:603
+2014-03-05 13:08:21 --- EMERGENCY: ErrorException [ 8 ]: Undefined variable: title ~ APPPATH/views/template.php [ 4 ] in /var/www/application/views/template.php:4
+2014-03-05 13:08:21 --- DEBUG: #0 /var/www/application/views/template.php(4): Kohana_Core::error_handler(8, 'Undefined varia...', '/var/www/applic...', 4, Array)
+#1 /var/www/application/views/Example.php(2): include('/var/www/applic...')
+#2 /var/www/system/classes/Kohana/View.php(61): include('/var/www/applic...')
+#3 /var/www/system/classes/Kohana/View.php(348): Kohana_View::capture('/var/www/applic...', Array)
+#4 /var/www/system/classes/Kohana/View.php(228): Kohana_View->render()
+#5 /var/www/system/classes/Kohana/Response.php(160): Kohana_View->__toString()
+#6 /var/www/application/classes/Controller/Welcome.php(9): Kohana_Response->body(Object(View))
+#7 /var/www/system/classes/Kohana/Controller.php(84): Controller_Welcome->action_index()
+#8 [internal function]: Kohana_Controller->execute()
+#9 /var/www/system/classes/Kohana/Request/Client/Internal.php(97): ReflectionMethod->invoke(Object(Controller_Welcome))
+#10 /var/www/system/classes/Kohana/Request/Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#11 /var/www/system/classes/Kohana/Request.php(986): Kohana_Request_Client->execute(Object(Request))
+#12 /var/www/index.php(118): Kohana_Request->execute()
+#13 {main} in /var/www/application/views/template.php:4

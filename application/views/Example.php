@@ -1,4 +1,5 @@
 <?php
-foreach($tags as $t)
-	echo $t->tagId.' '.$t->title;
+include('header.php');
+echo $content;
+include('footer.php');
 
