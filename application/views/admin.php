@@ -24,6 +24,10 @@
                                 <label for="source">Źródło</label>
                                 <input class="form-control" name="source" placeholder="Źródło" />
                         </div> 
+			<div class="form-group">
+				<label for="tags">Tagi</label>
+				<?=$tagMultiselect?>
+			</div>
                         <button class="btn btn-default" action="send">Zapisz</button>
                 </form>
         </div>

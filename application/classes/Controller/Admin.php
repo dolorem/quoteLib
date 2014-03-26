@@ -13,7 +13,9 @@ class Controller_Admin extends Controller_SuperController
 
 	public function action_index()
 	{
-		$this->template->content = View::factory($this->view);
+		$content = View::factory($this->view)
+			->set('tagMultiselect', $this->createTagMultiselect());
+		$this->template->content = $content;
 	}
 
 	public function action_addTag()
@@ -23,5 +25,32 @@ class Controller_Admin extends Controller_SuperController
 		$tag->title = $post['title'];
 		$tag->save();
 		$this->redirect('admin');
+	}
+
+	public function action_addArticle()
+	{
+		$post = $this->request->post();
+		$quote = ORM::factory('Quote');
+		$quote->author = $post['author'];
+		$quote->content = $post['content'];
+		$quote->source = $post['source'];
+		$quote->save();
+		foreach ($post['tags'] as $tag)
+		{
+			$tag = ORM::factory('Tag')->where('tagId', '=', $tag)->find();
+			$quote->add('tags', $tag);
+		}
+		$quote->save();
+		$this->redirect('admin');
+	}
+
+	public function createTagMultiselect()
+	{
+		$select = '<select multiple="multiple" name="tags[]">';
+		$tags = ORM::factory('Tag')->order_by('title', 'ASC')->find_all();
+		foreach ($tags as $tag)
+			$select .= '<option value="'.$tag->tagId.'">'.$tag->title.'</option>';
+		$select .= '</select>';
+		return $select;
 	}
 }
