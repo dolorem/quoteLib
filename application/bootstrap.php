@@ -160,6 +160,21 @@ Route::set('addArticle', 'addArticle')->defaults(array(
 	'controller' => 'admin',
 	'action' => 'addArticle'
 ));
+
+Route::set('deleteTag', 'deleteTag')->defaults(array(
+	'controller' => 'admin',
+	'action' => 'deleteTag'
+));
+
+Route::set('getTag', 'getTag')->defaults(array(
+	'controller' => 'admin',
+	'action' => 'getTag'
+));
+
+Route::set('editTag', 'editTag')->defaults(array(
+	'controller' => 'admin',
+	'action' => 'editTag'
+));
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.

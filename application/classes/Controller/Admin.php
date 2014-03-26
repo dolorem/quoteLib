@@ -9,12 +9,16 @@ class Controller_Admin extends Controller_SuperController
 		parent::before();
 		if (!Auth::instance()->logged_in())
 			$this->redirect('/index.php/login');
+		if ($this->request->is_ajax())
+			$this->auto_render = FALSE;
 	}
 
 	public function action_index()
 	{
+		$tags = ORM::factory('Tag')->order_by('title', 'ASC')->find_all();
 		$content = View::factory($this->view)
-			->set('tagMultiselect', $this->createTagMultiselect());
+			->set('tagMultiselect', $this->createTagMultiselect())
+			->set('tags', $tags);
 		$this->template->content = $content;
 	}
 
@@ -41,6 +45,29 @@ class Controller_Admin extends Controller_SuperController
 			$quote->add('tags', $tag);
 		}
 		$quote->save();
+		$this->redirect('admin');
+	}
+
+	public function action_deleteTag()
+	{
+		$tag = ORM::factory('Tag')->where('tagId', '=', $_GET['id'])->find();
+		$tag->delete();
+		$this->redirect('admin');
+	}
+
+	public function action_getTag()
+	{
+		$tag = ORM::factory('Tag')->where('tagId', '=', $_GET['id'])->find();
+		$this->auto_render = FALSE;
+		$this->response->headers(array('Content-Type' => 'application/json'))->body(json_encode($tag->as_array()));
+	}
+
+	public function action_editTag()
+	{
+		$post = $this->request->post();
+		$tag = ORM::factory('Tag')->where('tagId', '=', $post['id'])->find();
+		$tag->title = $post['title'];
+		$tag->update();
 		$this->redirect('admin');
 	}
 

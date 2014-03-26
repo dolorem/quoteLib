@@ -36,8 +36,40 @@
 <div class="row">
 	<div class="col-md-6">
 		<h3>Edycja tagów</h3>
+		<table class="table table-stripped">
+		<tr>
+			<th>Nazwa tagu</th>
+			<th>Edytuj</th>
+			<th>Usuń</th>
+		</tr>
+		<?php foreach ($tags as $tag): ?>
+			<tr>
+				<td><?=$tag->title?></td>
+				<td><a href="#" class="editTag" id="et<?=$tag->tagId?>"><span class="glyphicon glyphicon-edit">&nbsp;</span></a></td>
+				<td><a href="deleteTag?id=<?=$tag->tagId?>" class="delete"><span class="glyphicon glyphicon-remove">&nbsp;</span></a></td>
+			</tr>
+		<?php endforeach; ?>
+		</table>
 	</div>
 	<div class="col-md-6">
 		<h3>Edycja cytatów</h3>
 	</div>
 </div>
+<div id="tagEditModal" class="modal fade">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<form method="POST" action="editTag" role="form">
+				<div class="form-group">
+                        	        <label for="title">Nazwa</label>
+                        	        <input class="form-control" name="title" placeholder="Nazwa" />
+                        	</div>
+				<input type="hidden" name="id" />
+				<button type="submit" class="btn btn-primary">Zapisz</button>
+				<button class="btn btn-default closeButton" type="button">Anuluj</button>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="/resources/jQuery.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="/resources/resources.js"></script>
