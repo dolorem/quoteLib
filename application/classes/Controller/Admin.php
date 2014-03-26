@@ -15,4 +15,13 @@ class Controller_Admin extends Controller_SuperController
 	{
 		$this->template->content = View::factory($this->view);
 	}
+
+	public function action_addTag()
+	{
+		$post = $this->request->post();
+		$tag = ORM::factory('Tag');
+		$tag->title = $post['title'];
+		$tag->save();
+		$this->redirect('admin');
+	}
 }
