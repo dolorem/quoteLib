@@ -175,6 +175,22 @@ Route::set('editTag', 'editTag')->defaults(array(
 	'controller' => 'admin',
 	'action' => 'editTag'
 ));
+
+Route::set('deleteQuote', 'deleteQuote')->defaults(array(
+        'controller' => 'admin',
+        'action' => 'deleteQuote'
+));
+
+Route::set('getQuote', 'getQuote')->defaults(array(
+        'controller' => 'admin',
+        'action' => 'getQuote'
+));
+
+Route::set('editQuote', 'editQuote')->defaults(array(
+        'controller' => 'admin',
+        'action' => 'editQuote'
+));
+
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.

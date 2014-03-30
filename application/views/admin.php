@@ -53,6 +53,36 @@
 	</div>
 	<div class="col-md-6">
 		<h3>Edycja cytatów</h3>
+		<table class="table table-stripped">
+                <tr>
+                        <th>Autor</th>
+			<th>Treść</th>
+			<th>Tagi</th>
+                        <th>Edytuj</th>
+                        <th>Usuń</th>
+                </tr>
+                <?php foreach ($quotes as $quote): ?>
+                        <tr>
+                                <td><?=$quote->author?></td>
+				<td><?=$quote->content?></td>
+				<td>
+					<?php foreach ($quote->tags->find_all() as $tag): ?>
+							<?=$tag->title.' '?>
+					<?php endforeach; ?>
+				</td>
+				<td><a href="#" class="editQuote" id="eq<?=$quote->quoteId?>"><span class="glyphicon glyphicon-edit">&nbsp;</span></a></td>
+				<td><a href="deleteQuote?id=<?=$quote->quoteId?>" class="delete"><span class="glyphicon glyphicon-remove">&nbsp;</span></a></td>
+                        </tr>
+                <?php endforeach; ?>
+                </table>
+
+	</div>
+</div>
+<div id="quoteEditModal" class="modal fade">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			&nbsp;
+		</div>
 	</div>
 </div>
 <div id="tagEditModal" class="modal fade">

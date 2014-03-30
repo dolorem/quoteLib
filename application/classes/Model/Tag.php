@@ -8,8 +8,6 @@ class Model_Tag extends ORM
 		'quotes' => array(
 			'model' => 'Quote',
 			'through' => 'quote_tags',
-//			'far_key' => 'tagId',
-//			'foreign_key' => 'quoteId'
 			'far_key' => 'quoteId',
 			'foreign_key' => 'tagId'
 		),

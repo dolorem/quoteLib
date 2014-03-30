@@ -14,9 +14,25 @@ $(document).ready(function()
 		$('#tagEditModal').modal('show');
 		return false;
 	});
-
+	$('.editQuote').click(function()
+	{
+		var id = parseInt($(this).attr('id').replace('eq', ''));
+		$.ajax(
+		{
+			url: '/index.php/getQuote?id=' + id
+		}).done(function(data)
+		{
+			$('#quoteEditModal > div > div').first().html(data);
+		});
+		$('#quoteEditModal').modal('show');
+		return false;
+	});
 	$('#tagEditModal .closeButton').click(function()
 	{
 		$('#tagEditModal').modal('hide');
+	});
+	$(document).on('click', '#quoteEditModal .closeButton', function() 
+	{
+		$('#quoteEditModal').modal('hide');
 	});
 });
